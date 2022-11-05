@@ -3,6 +3,7 @@ package com.example.desenvolvimento.domain.application.controller;
 import com.example.desenvolvimento.domain.model.Analista;
 import com.example.desenvolvimento.domain.service.AnalistaService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import static org.springframework.http.ResponseEntity.ok;
@@ -27,6 +29,9 @@ public class AnalistaController {
 
     @PostMapping("/analista")
     public ResponseEntity saveAnalistta(@RequestBody @Validated Analista analista) {
+        if (Objects.isNull(analista.getEquipe())) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
         return ok(analistaService.saveAnalista(analista));
     }
 

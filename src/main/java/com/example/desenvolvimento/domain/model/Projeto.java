@@ -17,17 +17,17 @@ import javax.persistence.ManyToOne;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Analista {
+public class Projeto {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idAnalistas;
-    private String Cargo;
-    private String Nome;
+    private Long idProjeto;
+
+    private String nome_Projeto;
+
 
     @ManyToOne
-    @JoinColumn(name = "idequipe")
+    @JoinColumn(name = "idEquipe")
     private Equipe equipe;
-
 }
