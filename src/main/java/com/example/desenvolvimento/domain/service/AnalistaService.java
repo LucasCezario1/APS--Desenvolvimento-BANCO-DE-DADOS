@@ -1,6 +1,7 @@
 package com.example.desenvolvimento.domain.service;
 
 import com.example.desenvolvimento.domain.model.Analista;
+import com.example.desenvolvimento.domain.model.dto.AnalistaDto;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,7 +9,7 @@ import java.util.Optional;
 public interface AnalistaService {
 
     // Salva Analista no Banco de dados
-    Analista saveAnalista(Analista analista);
+    Analista saveAnalista(AnalistaDto analistaDto);
 
 
     // Lista Analista pelo id
@@ -18,7 +19,7 @@ public interface AnalistaService {
     List<Analista> ListarAnalista();
 
     // Atualiza lista analista pelo id no Banco de dados
-    Analista update(Optional<Analista> currentAnalista, Analista analista);
+    Analista update(Long idAnalista, AnalistaDto analistaDto);
 
 
     // Deleta Analaista pelo id

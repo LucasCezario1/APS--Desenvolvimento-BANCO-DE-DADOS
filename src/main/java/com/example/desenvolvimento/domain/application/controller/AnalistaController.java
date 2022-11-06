@@ -1,6 +1,7 @@
 package com.example.desenvolvimento.domain.application.controller;
 
 import com.example.desenvolvimento.domain.model.Analista;
+import com.example.desenvolvimento.domain.model.dto.AnalistaDto;
 import com.example.desenvolvimento.domain.service.AnalistaService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,11 +29,8 @@ public class AnalistaController {
     private AnalistaService analistaService;
 
     @PostMapping("/analista")
-    public ResponseEntity saveAnalistta(@RequestBody @Validated Analista analista) {
-        if (Objects.isNull(analista.getEquipe())) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
-        return ok(analistaService.saveAnalista(analista));
+    public ResponseEntity<Analista> saveAnalistta(@RequestBody @Validated AnalistaDto analistaDto) {
+        return ok(analistaService.saveAnalista(analistaDto));
     }
 
     @GetMapping("/analista")
@@ -46,10 +44,9 @@ public class AnalistaController {
     }
 
 
-    @PutMapping("/analista/{id}")
-    public ResponseEntity updateAnalista(@RequestBody Analista analista, @PathVariable("id") Long idAnalistas) {
-        Optional<Analista> currentAnalista = analistaService.ListarAnalistaByid(idAnalistas);
-        return ok(analistaService.update(currentAnalista, analista));
+    @PutMapping("/analista/{idAnalista}")
+    public ResponseEntity<Analista> updateAnalista( @PathVariable Long idAnalista, @RequestBody  AnalistaDto analistaDto) {
+        return ResponseEntity.ok(analistaService.update(idAnalista, analistaDto));
 
     }
 

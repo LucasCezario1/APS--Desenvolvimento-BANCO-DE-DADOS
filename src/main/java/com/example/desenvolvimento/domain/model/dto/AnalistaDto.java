@@ -9,7 +9,7 @@ import lombok.Data;
 @Builder
 public class AnalistaDto {
     private Long idAnalistas;
-    private String Cargo;
-    private String Nome;
+    private String cargo;
+    private String nome;
     private Long idEquipe;
 }
