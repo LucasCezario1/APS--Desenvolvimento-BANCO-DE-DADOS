@@ -23,5 +23,7 @@ public class Analista {
     private Long idAnalistas;
     private String Cargo;
     private String Nome;
+    private String Equipe;
+
 
 }
