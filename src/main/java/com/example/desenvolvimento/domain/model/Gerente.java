@@ -25,4 +25,5 @@ public class Gerente {
     private String Nome;
     private String Salario;
     private String Cargo;
+    private String Projeto;
 }
